@@ -1,0 +1,11 @@
+google-api-python-client
+pandas
+numpy
+matplotlib
+scipy
+# optional, for the ML backend:
+# torch transformers detoxify
+streamlit
+pandas
+matplotlib
+python-dotenv
