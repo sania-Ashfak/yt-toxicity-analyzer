@@ -281,4 +281,5 @@ Because the dashboard only reads `data/comments_clean.csv` and `data/reports/`, 
 - [@sania-Ashfak](https://github.com/sania-Ashfak)
 - [@minaheljaved007](https://github.com/minaheljaved007)
 -  [@asma Mushtaq]( https://github.com/2025AI263)
+-  [@ushna fatima](https://github.com/ushna-25)
 Contributions are welcome. Create your own `.env` with your own API key, make your changes on a branch, and open a pull request.
