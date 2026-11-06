@@ -57,6 +57,7 @@ STOPWORDS = {"the","a","an","and","or","of","to","in","on","for","with","my","ou
              "have","had","not","but","so","if","when","than","then","what","how",
              "official","video","episode","part","new","best","top","ft"}
 
+
 def infer_topic(title: str) -> str:
     t = " " + str(title).lower() + " "            # padded for word-boundary matching
     # 1) hashtag takes priority, mapped through a bucket when possible
@@ -96,7 +97,8 @@ def run(raw_path: str = config.RAW_PATH) -> pd.DataFrame:
         df[f"cat_{cat}"] = preds.map(
             lambda p, c=cat: p["categories"].get(c, p["categories"].get(c.replace("_", " "), 0.0)))
 
-    df["topic"] = df.get("video_title", "").map(infer_topic)   # keyword-based topics
+    video_titles = df["video_title"] if "video_title" in df.columns else pd.Series("", index=df.index)
+    df["topic"] = video_titles.fillna("").map(infer_topic).fillna("general")
     print(f"TRANSFORM done: toxicity rate = {df['is_toxic'].mean():.2%}")
     return df
 
