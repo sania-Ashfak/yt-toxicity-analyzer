@@ -252,10 +252,6 @@ git push
 - Compare several scoring models and report agreement.
 - Automated tests and a scheduled refresh workflow.
 
-## License
 
-Add a license of your choice (for example MIT) before sharing the project publicly.
-
----
 
 *Toxiscope · YouTube comment analysis*
