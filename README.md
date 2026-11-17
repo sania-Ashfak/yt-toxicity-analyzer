@@ -254,4 +254,4 @@ git push
 
 
 
-*Toxiscope · YouTube comment analysis*
+*Toxiscope · YouTube comment analysis by channels*
