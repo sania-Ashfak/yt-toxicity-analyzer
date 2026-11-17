@@ -2,8 +2,6 @@
 
 An end-to-end data project that collects YouTube comments, cleans them, scores them for toxicity, stores the results in SQLite, runs exploratory analysis, and presents everything in an interactive Streamlit dashboard.
 
-> **Note on scores:** toxicity values are *model estimates* of how likely a comment is to be toxic. They are not judgments about individual people, and a low rate does not mean a community is "healthy" or a high rate that it is "bad".
-
 ---
 
 ## Table of contents
