@@ -330,13 +330,7 @@ An API key committed by mistake stays in Git history even after the file is dele
 
 ---
 
-## 🤝 Feedback
 
-Ideas, questions or improvements are welcome. Open an [issue](../../issues) or reach out on LinkedIn.
-
-## 📄 License
-
-Add a license of your choice (for example MIT) before sharing the project widely.
 
 <div align="center">
 
