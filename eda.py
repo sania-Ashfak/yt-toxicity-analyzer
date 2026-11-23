@@ -152,7 +152,7 @@ def make_plots(
     per_video: pd.DataFrame,
     output_dir: str,
 ) -> str:
-    """Create readable dark-theme charts, tolerating sparse or missing data."""
+    """Create the two-panel dark-theme report chart (channel rate, reach vs. toxicity)."""
     os.makedirs(output_dir, exist_ok=True)
 
     background = "#10221b"
@@ -166,7 +166,7 @@ def make_plots(
 
     plt.rcParams["axes.titlecolor"] = text  # set_title(loc="left") ignores ax.title.set_color
     fig, axes = plt.subplots(
-        1, 3, figsize=(17, 5.8), facecolor=background, constrained_layout=True
+        1, 2, figsize=(12.5, 5.8), facecolor=background, constrained_layout=True
     )
 
     for ax in axes:
@@ -253,39 +253,6 @@ def make_plots(
                     label.set_color(text)
     else:
         ax.text(.5, .5, "Not enough video data", ha="center", va="center", color=muted, transform=ax.transAxes)
-
-    # Mean toxicity score by topic
-    ax = axes[2]
-    if {"topic", "toxicity_score"}.issubset(df.columns):
-        topic_data = df[["topic", "toxicity_score"]].copy()
-        topic_data["toxicity_score"] = pd.to_numeric(topic_data["toxicity_score"], errors="coerce")
-        topic_scores = (
-            topic_data.dropna(subset=["topic", "toxicity_score"])
-            .groupby("topic")["toxicity_score"]
-            .mean()
-            .nlargest(10)
-            .sort_values()
-        )
-    else:
-        topic_scores = pd.Series(dtype=float)
-
-    ax.set_title("Mean toxicity score by topic", loc="left", fontweight="bold")
-    if len(topic_scores) >= 2:
-        bars = ax.barh(topic_scores.index.astype(str), topic_scores.values, color=blue, height=.62)
-        ax.set_xlabel("Mean toxicity score (0–1)")
-        right = max(float(topic_scores.max()) * 1.35, .01)
-        ax.set_xlim(0, right)
-        for bar, value in zip(bars, topic_scores.values):
-            ax.text(
-                value + right * .025,
-                bar.get_y() + bar.get_height() / 2,
-                f"{value:.3f}",
-                va="center",
-                color=text,
-                fontsize=8,
-            )
-    else:
-        ax.text(.5, .5, "Only one topic detected -\nfix infer_topic() in transform.py", ha="center", va="center", color=muted, transform=ax.transAxes)
 
     output_path = os.path.join(output_dir, "toxicity_eda.png")
     fig.savefig(
