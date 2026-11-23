@@ -1,4 +1,4 @@
-# Toxiscope — YouTube Comment Toxicity Analyzer
+l# Toxiscope — YouTube Comment Toxicity Analyzer
 
 An end-to-end data project that collects YouTube comments, cleans them, scores them for toxicity, stores the results in SQLite, runs exploratory analysis, and presents everything in an interactive Streamlit dashboard.
 
@@ -249,7 +249,6 @@ git push
 - More channels and a channel selector in the dashboard.
 - Compare several scoring models and report agreement.
 - Automated tests and a scheduled refresh workflow.
-
 
 
 *Toxiscope · YouTube comment analysis by channels*
