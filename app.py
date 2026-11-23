@@ -333,11 +333,6 @@ with data_tab:
         with st.expander(title):
             show_df(df)
             st.download_button(f"Download {fname}", df.to_csv(index=False).encode("utf-8"), fname, "text/csv", key=f"dl_{fname}")
-    png = REPORT_DIR / "toxicity_eda.png"
-    if png.is_file():
-        found = True
-        with st.expander("Static EDA image (for reports)"):
-            st.image(str(png))
     if not found:
         st.markdown('<div class="empty-state">No reports yet. Run <code>python main.py eda</code>.</div>', unsafe_allow_html=True)
 
